@@ -12,51 +12,23 @@ describe "UniqueCode", ->
     workspaceElement = atom.views.getView(atom.workspace)
     activationPromise = atom.packages.activatePackage('unique-code')
 
-  describe "when the unique-code:toggle event is triggered", ->
-    it "hides and shows the modal panel", ->
-      # Before the activation event the view is not on the DOM, and no panel
-      # has been created
-      expect(workspaceElement.querySelector('.unique-code')).not.toExist()
+    waitsForPromise ->
+      atom.workspace.open()
 
-      # This is an activation event, triggering it will cause the package to be
-      # activated.
-      atom.commands.dispatch workspaceElement, 'unique-code:toggle'
+  it "converts", ->
+    editor = atom.workspace.getActiveTextEditor()
+    editor.insertText("cool")
+    editor.selectAll()
+    changeHandler = jasmine.createSpy('changeHandler')
+    editor.onDidChange(changeHandler)
 
-      waitsForPromise ->
-        activationPromise
+    atom.commands.dispatch workspaceElement, 'unique-code:getcode'
 
-      runs ->
-        expect(workspaceElement.querySelector('.unique-code')).toExist()
+    waitsForPromise ->
+      activationPromise
 
-        uniqueCodeElement = workspaceElement.querySelector('.unique-code')
-        expect(uniqueCodeElement).toExist()
+    waitsFor ->
+      changeHandler.callCount > 0
 
-        uniqueCodePanel = atom.workspace.panelForItem(uniqueCodeElement)
-        expect(uniqueCodePanel.isVisible()).toBe true
-        atom.commands.dispatch workspaceElement, 'unique-code:toggle'
-        expect(uniqueCodePanel.isVisible()).toBe false
-
-    it "hides and shows the view", ->
-      # This test shows you an integration test testing at the view level.
-
-      # Attaching the workspaceElement to the DOM is required to allow the
-      # `toBeVisible()` matchers to work. Anything testing visibility or focus
-      # requires that the workspaceElement is on the DOM. Tests that attach the
-      # workspaceElement to the DOM are generally slower than those off DOM.
-      jasmine.attachToDOM(workspaceElement)
-
-      expect(workspaceElement.querySelector('.unique-code')).not.toExist()
-
-      # This is an activation event, triggering it causes the package to be
-      # activated.
-      atom.commands.dispatch workspaceElement, 'unique-code:toggle'
-
-      waitsForPromise ->
-        activationPromise
-
-      runs ->
-        # Now we can test for view visibility
-        uniqueCodeElement = workspaceElement.querySelector('.unique-code')
-        expect(uniqueCodeElement).toBeVisible()
-        atom.commands.dispatch workspaceElement, 'unique-code:toggle'
-        expect(uniqueCodeElement).not.toBeVisible()
+    runs ->
+      expect(editor.getText().length).toEqual 8
