@@ -1,10 +1,9 @@
 {
   "name": "unique-code",
   "main": "./lib/unique-code",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "It can generate random uuid",
-  "keywords": [
-  ],
+  "keywords": [],
   "activationCommands": {
     "atom-workspace": "unique-code:getcode"
   },
@@ -13,6 +12,5 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
