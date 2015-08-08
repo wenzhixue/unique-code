@@ -8,7 +8,7 @@
   "activationCommands": {
     "atom-workspace": "unique-code:getcode"
   },
-  "repository": "https://github.com/atom/unique-code",
+  "repository": "https://github.com/wenzhixue/unique-code",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
