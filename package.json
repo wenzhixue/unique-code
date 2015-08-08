@@ -6,7 +6,7 @@
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "unique-code:toggle"
+    "atom-workspace": "unique-code:convert"
   },
   "repository": "https://github.com/atom/unique-code",
   "license": "MIT",
