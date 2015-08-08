@@ -1,12 +1,12 @@
 {
   "name": "unique-code",
   "main": "./lib/unique-code",
-  "version": "0.0.0",
-  "description": "A short description of your package",
+  "version": "0.0.1",
+  "description": "It can generate random uuid",
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "unique-code:convert"
+    "atom-workspace": "unique-code:getcode"
   },
   "repository": "https://github.com/atom/unique-code",
   "license": "MIT",

@@ -3,7 +3,7 @@
   'atom-text-editor': [
     {
       'label': 'Toggle unique-code'
-      'command': 'unique-code:convert'
+      'command': 'unique-code:getcode'
     }
   ]
 'menu': [
@@ -13,8 +13,8 @@
       'label': 'unique-code'
       'submenu': [
         {
-          'label': 'Convert'
-          'command': 'unique-code:convert'
+          'label': 'Get Code'
+          'command': 'unique-code:getcode'
         }
       ]
     ]
