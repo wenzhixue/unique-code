@@ -1,7 +1,7 @@
 {
   "name": "unique-code",
   "main": "./lib/unique-code",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "It can generate random uuid",
   "keywords": [],
   "activationCommands": {
